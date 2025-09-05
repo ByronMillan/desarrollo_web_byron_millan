@@ -1,0 +1,65 @@
+.foto-chica {
+    width: 320px;
+    height: 240px;
+    object-fit: cover;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.foto-chica:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#foto {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.modal {
+    display: none; /* lo muestras con JS */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* botón debajo de la imagen */
+    z-index: 1000;
+}
+
+.modal img {
+    width: 800px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.modal button {
+    background-color: #3fcee4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+.modal button:hover {
+    background-color: #1A5DB8;
+}
+
+.botones {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

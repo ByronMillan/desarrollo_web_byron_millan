@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Adoptando Ayudo | Información de Aviso</title>
+        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+        <link href="../css/info.css" rel="stylesheet" type="text/css" />
+        <link href="../css/fotos.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Adoptando Ayudo - Información de Aviso de Adopción</h1>
+            <div class="lugar">
+                <h2>Lugar</h2>
+                <div id="region" class="lugar">
+                    <label>Región</label>
+                    <p>Región de Valparaíso</p>
+                </div>
+                <div id="comuna" class="lugar">
+                    <label>Comuna</label>
+                    <p>Valparaíso</p>
+                </div>
+                <div id="sector" class="lugar">
+                    <label>Sector</label>
+                    <p>Cerro Alegre, pasaje Montt</p>
+                </div>
+            </div>
+            <div class="contacto">
+                <h2>Contacto de esta publicación</h2>
+                <div id="nombre" class="contacto">
+                    <label>Nombre</label>
+                    <p>María González</p>
+                </div>
+                <div id="email" class="contacto">
+                    <label>Email</label>
+                    <p>mariagonzalez@gmail.com</p>
+                </div>
+                <div id="numero" class="contacto">
+                    <label>Número de celular</label>
+                    <p>+569.98712346</p>
+                </div>
+                <div id="contactar" class="contacto">
+                    <label>Contactar por</label>
+                    <ul>
+                        <li>
+                            X: <a href="https://www.x.com/maria_gonzalez94" target="_blank">
+                                @maria_gonzalez94
+                                </a>
+                        </li>
+                        <li>
+                            Instagram: <a href="https://www.instagram.com/maria.gonzalez.94" target="_blank">
+                                @maria.gonzalez.94
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mascota">
+                <h2>Mascota en adopción</h2>
+                <div id="tipo" class="mascota">
+                    <label>Tipo</label>
+                    <p>Perro</p>
+                </div>
+                <div id="cantidad" class="mascota">
+                    <label>Cantidad</label>
+                    <p>2</p>
+                </div>
+                <div id="edad" class="mascota">
+                    <label>Edad</label>
+                    <p>4</p>
+                </div>
+                <div id="unidad-edad" class="mascota">
+                    <label>Unidad de medida de la edad</label>
+                    <p>Meses</p>
+                </div>
+                <div id="fecha" class="mascota">
+                    <label>Fecha disponible para entrega</label>
+                    <p>2025-08-22 12:00</p>
+                </div>
+                <div id="descripcion" class="mascota">
+                    <label>Descripción</label>
+                    <p>
+                        Dos cachorros de cuatro meses, juguetones y cariñosos, acostumbrados a estar con niños y otros animales. De tamaño pequeño y con buena salud.
+                    </p>
+                </div>
+                <div id="foto" class="mascota" style="text-align: center;">
+                    <label>Fotos</label><br>
+                    <img src="../img/aviso1.jpg" alt="foto-1" class="foto-chica" onclick="verFoto(this)">
+                    <img src="../img/aviso1-2.jpg" alt="foto-2" class="foto-chica" onclick="verFoto(this)">
+                    <img src="../img/aviso1-3.jpg" alt="foto-3" class="foto-chica" onclick="verFoto(this)">
+                </div>
+                <div id="modalFoto" class="modal" style="display: none;">
+                    <img id="fotoGrande" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Foto ampliada">
+                    <button onclick="cerrarModal()" style="align-self: center;">Cerrar</button>
+                </div>
+            </div>
+            <div class="botones" style="text-align: center; margin-top: 40px;">
+                <a href="listado.html" id="ver_listado" class="boton">Volver al listado de avisos de adopción</a>
+                <a href="index.html" id="portada" class="boton">Volver a la portada</a>
+            </div>
+        </div>
+        <script src="../js/look-photos.js"></script>
+    </body>
+</html>
