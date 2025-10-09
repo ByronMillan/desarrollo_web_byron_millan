@@ -1,0 +1,24 @@
+{% extends 'estadisticas/base.html' %}
+
+{% block title %} Estadísticas {% endblock %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="graficos">
+    <div class="grafico_lineas" style="text-align: center; margin-top: 50px;">
+        <h2>Cantidad de avisos de adopción por día</h2>
+        <img src="{{ url_for('static', filename='img/grafico1.png') }}" alt="Avisos por día">
+    </div>
+    <div class="grafico_torta" style="text-align: center; margin-top: 50px;">
+        <h2>Total de avisos de adopción por tipo de mascota</h2>
+        <img src="{{ url_for('static', filename='img/grafico2.png') }}" alt="Total de avisos por tipo de mascota">
+    </div>
+    <div class="grafico_barras" style="text-align: center; margin-top: 50px;">
+        <h2>Cantidad de avisos por mes según el tipo de mascota</h2>
+        <img src="{{ url_for('static', filename='img/grafico3.png') }}" alt="Avisos por mes">
+    </div>
+</div>
+{% endblock content %}

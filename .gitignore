@@ -1,0 +1,23 @@
+# Ignorar entorno virtual
+venv/
+.env/
+
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos temporales o locales
+*.log
+*.sqlite3
+instance/
+.env
+
+# Configuración del sistema o IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Archivos de entorno
+*.bak

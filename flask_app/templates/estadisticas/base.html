@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Adoptando Ayudo{% endblock %}</title>
+        {% block css %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <h1>Adoptando Ayudo - Estadísticas</h1>
+            {% block content %}{% endblock %}
+            <div class="botones" style="text-align: center; margin-top: 50px;">
+                <a href="{{ url_for('portada') }}" id="portada" class="boton">Volver a la portada</a>
+            </div>
+        </div>
+    </body>
+</html>

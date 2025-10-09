@@ -1,0 +1,57 @@
+{% extends 'listado/base.html' %}
+
+{% block title %} Listado de Avisos {% endblock %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="listado">
+    {% if data %}
+        <table style="margin-top: 50px;">
+            <tr>
+                <th>Fecha de publicación</th>
+                <th>Fecha disponible para entrega</th>
+                <th>Comuna</th>
+                <th>Sector</th>
+                <th>Cantidad, tipo y edad</th>
+                <th>Nombre del contacto</th>
+                <th>Total  de fotos</th>
+            </tr>
+            {% for aviso in data %}
+                <tr class="clickable-row" data-href="{{ url_for('info_aviso', aviso_id=aviso.id) }}">
+                    <td>{{ aviso.fecha_publicacion }}</td>
+                    <td>{{ aviso.fecha_entrega }}</td>
+                    <td>{{ aviso.comuna }}</td>
+                    {% if aviso.sector %}
+                        <td>{{ aviso.sector }}</td>
+                    {% else %}
+                        <td>---</td>
+                    {% endif %}
+                    <td>{{ aviso.cantidad }} {{ aviso.tipo }} {{ aviso.edad }} {{ aviso.unidad_medida }}</td>
+                    <td>{{ aviso.nombre }}</td>
+                    <td>{{ aviso.numero_fotos }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="{{ url_for('listado', page=page-1) }}">Anterior</a>
+            {% endif %}
+            <span>Página {{ page }} de {{ total_pages }}</span>
+            {% if page < total_pages %}
+                <a href="{{ url_for('listado', page=page+1) }}">Siguiente</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <div style="text-align: center;">
+            <p>No hay avisos aún.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/click-table.js') }}"></script>
+{% endblock %}

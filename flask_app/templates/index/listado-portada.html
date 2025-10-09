@@ -1,0 +1,43 @@
+{% extends 'index/index.html' %}
+
+{% block title %} Portada {% endblock %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="listado_portada">
+    {% if data %}
+        <p style="margin-top: 30px;">
+            Aquí están los últimos 5 avisos de adopción agregados:
+        </p>
+        <table style="margin-top: 30px;">
+            <tr>
+                <th>Fecha publicación</th>
+                <th>Comuna</th>
+                <th>Sector</th>
+                <th>Cantidad, tipo y edad</th>
+                <th>Foto</th>
+            </tr>
+            {% for aviso in data %}
+                <tr>
+                    <td>{{aviso.fecha}}</td>
+                    <td>{{aviso.comuna}}</td>
+                    {% if aviso.sector %}
+                        <td>{{aviso.sector}}</td>
+                    {% else %}
+                        <td>---</td>
+                    {% endif %}
+                    <td>{{aviso.cantidad}} {{aviso.tipo}} {{aviso.edad}} {{aviso.unidad_medida}}</td>
+                    <td>
+                        <img src="{{aviso.foto1}}" alt="Foto" width="320" height="240">
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p style="text-align: center; margin-top: 30px;">No hay avisos aún.</p>
+    {% endif %}
+</div>
+{% endblock content %}

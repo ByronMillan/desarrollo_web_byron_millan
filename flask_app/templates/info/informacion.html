@@ -1,0 +1,119 @@
+{% extends 'info/base.html' %}
+
+{% block title %} Información de Aviso {% endblock %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename='css/info.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename='css/fotos.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="info-aviso">
+    <h1>Adoptando Ayudo - Información de Aviso de Adopción</h1>
+    {% if aviso %}
+        <h2>Aviso # {{ aviso.id }}</h2>
+        <div class="lugar">
+            <h3>Lugar</h3>
+            <div class="lugar">
+                <label>Región</label>
+                <p>{{ aviso.region }}</p>
+            </div>
+            <div class="lugar">
+                <label>Comuna</label>
+                <p>{{ aviso.comuna }}</p>
+            </div>
+            {% if aviso.sector %}
+                <div class="lugar">
+                    <label>Sector</label>
+                    <p>{{ aviso.sector }}</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="contacto">
+            <h3>Contacto de esta publicación</h3>
+            <div class="contacto">
+                <label>Nombre</label>
+                <p>{{ aviso.nombre }}</p>
+            </div>
+            <div class="contacto">
+                <label>Email</label>
+                <p>{{ aviso.email }}</p>
+            </div>
+            {% if aviso.celular %}
+                <div class="contacto">
+                    <label>Número de celular</label>
+                    <p>{{ aviso.celular }}</p>
+                </div>
+            {% endif %}
+            {% if contactos %}
+                <div class="contacto">
+                    <label>Contactar por</label>                    
+                    <ul>
+                        {% for contacto in contactos %}
+                            <li>
+                                {{ contacto.nombre }}: {{ contacto.identificador }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+        <div class="mascota">
+            <h3>Mascota en adopción</h3>
+            <div class="mascota">
+                <label>Tipo</label>
+                {% if aviso.tipo == "gato" %}
+                    <p>Gato</p>
+                {% elif aviso.tipo == "perro" %}
+                    <p>Perro</p>
+                {% endif %}
+            </div>
+            <div class="mascota">
+                <label>Cantidad</label>
+                <p>{{ aviso.cantidad }}</p>
+            </div>
+            <div class="mascota">
+                <label>Edad</label>
+                <p>{{ aviso.edad }}</p>
+            </div>
+            <div class="mascota">
+                <label>Unidad de medida de la edad</label>
+                {% if aviso.unidad_medida == "m" %}
+                    <p>Meses</p>
+                {% elif aviso.unidad_medida == "a" %}
+                    <p>Años</p>
+                {% endif %}
+            </div>
+            <div class="mascota">
+                <label>Fecha disponible para entrega</label>
+                <p>{{ aviso.fecha_entrega }}</p>
+            </div>
+            {% if aviso.descripcion %}
+                <div class="mascota">
+                    <label>Descripción</label>
+                    <p>{{ aviso.descripcion }}</p>
+                </div>
+            {% endif %}
+            <div class="mascota-fotos" style="text-align: center;">
+                <label>Fotos</label><br>
+                <div class="fotos-container">
+                    {% for foto in fotos %}
+                        <img src="{{ url_for('static', filename=foto.ruta_archivo) }}" alt="foto" class="foto-chica" onclick="verFoto(this)"><br>
+                    {% endfor %}
+                </div>
+            </div>
+            <div id="modalFoto" class="modal" style="display: none;">
+                <img id="fotoGrande" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Foto ampliada">
+                <button onclick="cerrarModal()" style="align-self: center;">Cerrar</button>
+            </div>
+        </div>
+    {% else %}
+        <p>No se encontró la información del aviso.</p>
+    {% endif %}
+</div>
+{% endblock content %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/look-photos.js') }}"></script>
+{% endblock %}
