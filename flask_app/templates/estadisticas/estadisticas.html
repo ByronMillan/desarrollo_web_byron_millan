@@ -1,0 +1,34 @@
+{% extends 'estadisticas/base.html' %}
+
+{% block title %} Estadísticas {% endblock %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="graficos" style="text-align: center; margin: 20px;">
+    <figure class="highcharts-figure">
+        <div id="grafico_lineas" style="height: 400px; margin: 30px 0;"></div>
+        <p class="highcharts-description">
+            El anterior grafico presenta la cantidad de avisos de adopción agregados por día.
+        </p>
+
+        <div id="grafico_torta" style="height: 400px; margin: 30px 0;"></div>
+        <p class="highcharts-description">
+            El anterior grafico muestra la proporción total de avisos de adopción por tipo de mascota.
+        </p>
+
+        <div id="grafico_barras" style="height: 400px; margin: 30px 0;"></div>
+        <p class="highcharts-description">
+            El anterior grafico presenta la cantidad de avisos mensuales según el tipo de mascota.
+        </p>
+    </figure>
+</div>
+{% endblock content %}
+
+{% block javascript %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="{{url_for('static', filename='js/stats.js')}}"></script>
+{% endblock %}
+

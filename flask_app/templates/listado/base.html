@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Adoptando Ayudo{% endblock %}</title>
+        {% block css %}{% endblock %}
+        <style>
+            tr:hover {
+                background-color: #dfefff;
+            }
+        </style> 
+    </head>   
+    <body>
+        <div class="container">
+            <h1>Adoptando Ayudo - Listado de Avisos de Adopción</h1>
+            <section class="listado-avisos">
+                {% block content %}{% endblock %}
+            </section>
+            <div class="botones" style="text-align: center; margin-top: 50px;">
+                <a href="{{ url_for('portada') }}" id="portada" class="boton">Volver a la portada</a>
+            </div>
+        </div>
+        {% block javascript %}{% endblock %}
+    </body>
+</html>

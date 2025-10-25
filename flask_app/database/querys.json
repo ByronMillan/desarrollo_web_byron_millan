@@ -1,0 +1,19 @@
+{
+    "get_commune_by_id": "SELECT id, nombre, region_id FROM comuna WHERE id=%s;",
+    "get_commune_by_name": "SELECT id, nombre, region_id FROM comuna WHERE nombre=%s;",
+    "get_photos_by_notice_id": "SELECT id, ruta_archivo, nombre_archivo, aviso_id FROM foto WHERE aviso_id=%s;",
+    "get_notices": "SELECT id, fecha_ingreso, comuna_id, sector, nombre, email, celular, tipo, cantidad, edad, unidad_medida, fecha_entrega, descripcion FROM aviso_adopcion ORDER BY fecha_ingreso DESC LIMIT %s OFFSET %s;",
+    "create_notice": "INSERT INTO aviso_adopcion (fecha_ingreso, comuna_id, sector, nombre, email, celular, tipo, cantidad, edad, unidad_medida, fecha_entrega, descripcion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);",
+    "create_contact": "INSERT INTO contactar_por (nombre, identificador, aviso_id) VALUES (%s, %s, %s);",
+    "create_photo": "INSERT INTO foto (ruta_archivo, nombre_archivo, aviso_id) VALUES (%s, %s, %s);",
+    "count_notices": "SELECT COUNT(*) FROM aviso_adopcion;",
+    "count_photos": "SELECT COUNT(*) FROM foto WHERE aviso_id=%s;",
+    "get_notice_by_id": "SELECT id, fecha_ingreso, comuna_id, sector, nombre, email, celular, tipo, cantidad, edad, unidad_medida, fecha_entrega, descripcion FROM aviso_adopcion WHERE id=%s;",
+    "get_region_by_id": "SELECT id, nombre FROM region WHERE id=%s;",
+    "get_all_contacts": "SELECT id, nombre, identificador, aviso_id FROM contactar_por WHERE aviso_id=%s;",
+    "get_avisos_por_dia": "SELECT DATE(fecha_ingreso) AS fecha, COUNT(*) AS cantidad FROM aviso_adopcion GROUP BY DATE(fecha_ingreso) ORDER BY DATE(fecha_ingreso);",
+    "get_avisos_por_tipo": "SELECT tipo, COUNT(*) AS cantidad FROM aviso_adopcion GROUP BY tipo ORDER BY tipo;",
+    "get_avisos_por_mes_y_tipo": "SELECT DATE_FORMAT(fecha_ingreso, '%Y-%m') AS mes, tipo, COUNT(*) AS cantidad FROM aviso_adopcion GROUP BY mes, tipo ORDER BY mes;",
+    "add_comentario": "INSERT INTO comentario (nombre, texto, fecha, aviso_id) VALUES (%s, %s, %s, %s);",
+    "get_comments_by_notice_id": "SELECT id, nombre, texto, fecha FROM comentario WHERE aviso_id=%s ORDER BY fecha DESC;"
+}

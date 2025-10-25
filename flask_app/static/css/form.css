@@ -1,0 +1,38 @@
+:required {
+  border-color: #88a;
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+}
+
+input, select, textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 97%;
+  min-height: 30px;
+  display: block;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+}
+
+form {
+  max-width: 700px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border-color: rgb(79, 79, 79); 
+  box-shadow: 0 0 5px rgb(79, 79, 79);
+}
+
+input[type="radio"] {
+  display: inline-block;
+  width: auto;
+  min-height: 0;
+  padding: 0;
+  margin: 0 8px 0 0;
+  vertical-align: middle;
+  box-shadow: none;
+}

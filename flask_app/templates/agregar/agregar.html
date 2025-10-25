@@ -1,0 +1,136 @@
+{% extends 'agregar/base.html' %}
+
+{% block title %} Agregar Aviso {% endblock %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="enunciado">
+        <h1>Adoptando Ayudo - Agregar Aviso de Adopción</h1>
+        <p style="text-align: center;">
+            Llena el siguiente formulario para agregar un aviso de adopción.
+        </p>
+    </div>
+    <div id="val-box" hidden style="max-width: 700px; margin: 20px auto;">
+        <h2 id="val-msg"></h2>
+        <ul id="val-list"></ul>
+    </div>
+    <form class="formulario" name="aviso-form" action="{{url_for('agregar')}}" method="post" enctype="multipart/form-data">
+        <div class="lugar">
+            <h2>¿Dónde?</h2>
+            <div id="region-input" class="lugar-input">
+                <label for="select-region">Región</label>
+                <select id="select-region" name="select-region" required>
+                    <option value="">Seleccione una región</option>
+                </select>
+            </div>
+            <div id="comuna-input" class="lugar-input">
+                <label for="select-commune">Comuna</label>
+                <select id="select-commune" name="select-commune" required>
+                    <option value="">Seleccione una comuna</option>
+                </select>
+            </div>
+            <div id="sector-input" class="lugar-input">
+                <label for="sector">Sector</label>
+                <input id="sector" name="sector" type="text" maxlength="100" style="border-color: rgb(144, 144, 157);">
+            </div>
+        </div>
+        <div class="contacto" style="margin-top: 50px;">
+            <h2>¿Contacto de esta publicación?</h2>
+            <div id="nombre-input" class="contacto-input">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="nombre" type="text" minlength="3" maxlength="200" required>
+            </div>
+            <div id="email-input" class="contacto-input">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" maxlength="100" required>
+            </div>
+            <div id="numero-input" class="contacto-input">
+                <label for="numero">Número de celular</label>
+                <input id="numero" name="numero" type="tel" style="border-color: rgb(144, 144, 157);">
+            </div>
+            <div id="contactos-container">
+                <div class="contacto-input">
+                    <label for="select-contact-1">Contactar por</label>
+                    <select id="select-contact-1" name="select-contact-1" class="select-contact">
+                        <option value="">-- Seleccionar --</option>
+                        <option value="whatsapp">WhatsApp</option>
+                        <option value="telegram">Telegram</option>
+                        <option value="x">X</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="tiktok">TikTok</option>
+                        <option value="otra">Otra</option>
+                    </select><br>
+                    <label for="id-url-1" class="id-label" style="display: none;">ID o URL</label>
+                    <input id="id-url-1" name="id-url-1" type="text" minlength="4" maxlength="50" style="display: none;">
+                </div>
+                <button type="button" id="agregar-contacto" style="display: none; margin-top: 5px;">
+                    Agregar otro contacto
+                </button>
+            </div>
+        </div>
+        <div class="mascota">
+            <h2>¿Qué mascota ofrece en adopción?</h2>
+            <div id="tipo-input" class="mascota-input" >
+                <label>Tipo</label>
+                <label style="margin: 150px;">
+                    <input id="gato" name="tipo" type="radio" value="gato">Gato
+                </label>
+                <label>
+                    <input id="perro" name="tipo" type="radio" value="perro">Perro
+                </label>
+            </div>
+            <div id="cantidad-input" class="mascota-input" style="margin-top: 15px;">
+                <label for="cantidad">Cantidad</label>
+                <input id="cantidad" name="cantidad" type="number" min="1" required>
+            </div>
+            <div id="edad-input" class="mascota-input">
+                <label for="edad">Edad</label>
+                <input id="edad" name="edad" type="number" min="1" required>
+            </div>
+            <div id="unidad-edad-input" class="mascota-input" style="margin-top: 20px;">
+                <label>Unidad de medida de la edad</label>
+                <label style="margin: 100px;">
+                    <input id="meses" name="unidad-edad" type="radio" value="m">Meses
+                </label>
+                <label>
+                    <input id="años" name="unidad-edad" type="radio" value="a">Años
+                </label>
+            </div>
+            <div id="fecha-input" class="mascota-input" style="margin-top: 20px;">
+                <label for="fecha">Fecha disponible para entrega</label>
+                <input id="fecha" name="fecha" type="datetime-local" required>
+            </div>
+            <div id="descripcion-input" class="mascota-input">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" cols="50" rows="10" style="border-color: rgb(144, 144, 157);"></textarea>
+            </div>
+            <div id="foto-input" class="mascota-input">
+                <label for="fotos">Fotos</label>
+                <div id="photo-container">
+                    <input id="fotos" name="fotos" type="file" accept="image/*" required>
+                </div>
+                <button type="button" id="agregar-foto" style="margin-top: 5px;">
+                    Agregar otra foto
+                </button>
+            </div>
+        </div>
+        <button type="button" id="submit-btn" class="boton" style="margin-top: 35px; background-color: #1ae195;">
+                Agregar este aviso de adopción
+        </button>
+    </form>
+</div>
+{% endblock content %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/region_comuna.js') }}"></script>
+<script src="{{ url_for('static', filename='js/select-region.js') }}"></script>
+<script src="{{ url_for('static', filename='js/select-contact.js') }}"></script>
+<script src="{{ url_for('static', filename='js/set-date.js') }}"></script>
+<script src="{{ url_for('static', filename='js/submit-photos.js') }}"></script>
+<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+{% endblock %}

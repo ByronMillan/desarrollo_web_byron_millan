@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Adoptando Ayudo{% endblock %}</title>
+        {% block css %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div id="flash-container">
+                        {% for category, message in messages %}
+                            <div class="flash flash-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <div class="bienvenida">
+                <h1>Adoptando Ayudo</h1>
+                <p id="mensaje_bienvenida" style="text-align: center; margin-top: 50px;">
+                    Bienvenid@ a Adoptando Ayudo. Aquí les damos un nuevo hogar a perros y gatos. 
+                    Puedes agregar un aviso de adopción, ver el listado de adopciones disponibles y ver estadísticas.
+                </p>
+            </div>
+            <div class="botones" style="text-align: center; margin-top: 50px;">
+                <a href="{{ url_for('agregar') }}" id="agregar_aviso" class="boton">Agregar aviso de adopción</a>
+                <a href="{{ url_for('listado') }}" id="ver_listado" class="boton">Ver listado de adopciones</a>
+                <a href="{{ url_for('estadisticas') }}" id="ver_estadisticas" class="boton">Estadísticas</a>
+            </div>
+            <section class="avisos-portada">
+                {% block content %}{% endblock %}
+            </section>
+        </div>
+    </body>
+</html>
